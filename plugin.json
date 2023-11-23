@@ -1,8 +1,8 @@
 {
-  "name": "plugin-sample-vite-svelte",
-  "author": "frostime",
-  "url": "https://github.com/siyuan-note/plugin-sample-vite-svelte",
-  "version": "0.2.8",
+  "name": "siyuan-plugin-docky",
+  "author": "zuoez02",
+  "url": "https://github.com/zuoez02/siyuan-plugin-docky",
+  "version": "0.1.0",
   "minAppVersion": "2.10.14",
   "backends": [
     "windows",
@@ -14,12 +14,12 @@
     "desktop-window"
   ],
   "displayName": {
-    "en_US": "Plugin sample with vite and svelte",
-    "zh_CN": "插件样例 vite + svelte 版"
+    "en_US": "Dock Tools",
+    "zh_CN": "侧边栏工具"
   },
   "description": {
-    "en_US": "SiYuan plugin sample with vite and svelte",
-    "zh_CN": "使用 vite 和 svelte 开发的思源插件样例"
+    "en_US": "Siyuan docks tools",
+    "zh_CN": "在思源侧边栏中绑定你的内容"
   },
   "readme": {
     "en_US": "README.md",
@@ -27,10 +27,10 @@
   },
   "funding": {
     "custom": [
-      "https://afdian.net/a/frostime"
+      "https://afdian.net/a/zuoez02"
     ]
   },
   "keywords": [
-    "plugin", "sample", "插件样例"
+    "docky", "侧边栏工具"
   ]
 }

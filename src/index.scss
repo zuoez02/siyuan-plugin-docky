@@ -1,26 +1,29 @@
-#helloPanel {
-    border: 1px rgb(189, 119, 119) dashed;
+.docky-panel {
+    padding: 0 12px 12px;
+    position: relative;
+    .actions {
+        position: absolute;
+        top: 8px;
+        right: 28px;
+        display: none;
+        z-index: 2;
+
+        button {
+            background-color: rgba(0,0,0,.5);
+
+            svg {
+                margin: 0;
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+
+    &:hover .actions {
+        display: block;
+    }
 }
 
-.plugin-sample {
-    &__custom-tab {
-        background-color: var(--b3-theme-background);
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__custom-dock {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__time {
-        background: var(--b3-card-info-background);
-        border-radius: 4px;
-        padding: 2px 8px;
-    }
+.docky-hint {
+    padding: 12px;
 }
