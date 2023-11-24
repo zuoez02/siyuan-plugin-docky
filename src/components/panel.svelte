@@ -7,12 +7,13 @@
 
     onMount(() => {
         new Protyle(plugin.app, block, {
+            action: ['cb-get-all'],
             blockId: blockId,
             render: {
                 background: false,
                 title: false,
-                gutter: false,
-                scroll: true,
+                gutter: true,
+                scroll: false,
                 breadcrumb: false,
                 breadcrumbDocName: false,
             }

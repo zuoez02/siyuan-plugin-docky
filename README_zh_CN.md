@@ -11,9 +11,9 @@
 
 ## TODO
 
-[ ] dock图标自定义
-[ ] dock名称自定义
++ [ ] dock图标自定义
++ [ ] dock名称自定义
 
 ## Changelog
-
++ v0.1.0: 修正Panel配置
 + v0.1.0: 首个版本
