@@ -1,3 +1,11 @@
+<!--
+ Copyright (c) 2023 by frostime. All Rights Reserved.
+ Author       : frostime
+ Date         : 2023-12-17 10:06:19
+ FilePath     : /src/components/panel.svelte
+ LastEditTime : 2023-12-17 10:38:21
+ Description  : 
+-->
 <script lang="ts">
     import { Protyle } from "siyuan";
     import { onMount } from "svelte";
@@ -24,4 +32,4 @@
     export let plugin: DockyPlugin;
 </script>
 
-<div bind:this={block}></div>
+<div class="docky-panel-body" bind:this={block}></div>

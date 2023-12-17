@@ -1,18 +1,22 @@
 {
-    "addTopBarIcon": "Add a top bar icon by plugin",
-    "cancel": "Cancel",
-    "save": "Save",
-    "byeMenu": "Bye, Menu!",
-    "helloPlugin": "Hello, Plugin!",
-    "byePlugin": "Bye, Plugin!",
-    "showDialog": "Show dialog",
-    "removedData": "Data deleted",
-    "confirmRemove": "Confirm to delete the data in ${name}?",
-    "insertEmoji": "Insert Emoji",
-    "removeSpace": "Remove Space",
-    "getTab": "Print out all opened custom tabs in the debugger",
-    "name": "SiYuan",
-    "hello": {
-        "makesure": "Before using this template, please read the <a href=\"https://github.com/siyuan-note/plugin-sample\">offical sample</a>, make sure that you've known about the pipeline for plugin developing."
+    "title": "Sidebar Tools",
+    "alreadyExist": "Block ID already exists",
+    "add": "Add Block ID from Clipboard",
+    "min": "Minimize",
+    "remove": "Remove",
+    "moveUp": "Move Up",
+    "moveDown": "Move Down",
+    "addBlock": "Copy Block ID and click the + icon in the top right corner to add a block here",
+    "addDock": "Add Block to Sidebar",
+    "removeDock": "Remove from Sidebar",
+    "setting": {
+        "enableZoom": {
+            "title": "Enable Zoom",
+            "description": "When enabled, the sidebar document will be zoomed to fit the size of the sidebar"
+        },
+        "zoomFactor": {
+            "title": "Zoom Factor",
+            "description": "Sidebar document zoom factor"
+        }
     }
 }

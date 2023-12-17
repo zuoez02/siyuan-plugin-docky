@@ -15,5 +15,12 @@
 + [ ] dock名称自定义
 
 ## Changelog
++ v0.2.0: 添加缩放功能
 + v0.1.0: 修正Panel配置
 + v0.1.0: 首个版本
+
+
+## Contribution
+
+- frostime: 侧边栏缩放功能; I18n
+
