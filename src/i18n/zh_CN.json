@@ -8,5 +8,15 @@
     "moveDown": "向下移动",
     "addBlock": "复制块ID并点击右上角+以添加块到此处",
     "addDock": "添加块到侧边栏",
-    "removeDock": "从侧边栏移除"
+    "removeDock": "从侧边栏移除",
+    "setting": {
+        "enableZoom": {
+            "title": "启用缩放",
+            "description": "开启后，侧边文档将会缩放以适应侧边栏的大小"
+        },
+        "zoomFactor": {
+            "title": "缩放比例",
+            "description": "侧边栏文档缩放比例"
+        }
+    }
 }

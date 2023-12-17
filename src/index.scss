@@ -1,3 +1,7 @@
+:root {
+    --plugin-docky-zoom: unset;
+}
+
 .docky-panel {
     padding: 0 12px 12px;
     position: relative;
@@ -22,6 +26,10 @@
     &:hover .actions {
         display: block;
     }
+}
+
+.docky-panel-body.protyle {
+    zoom: var(--plugin-docky-zoom);
 }
 
 .docky-hint {
