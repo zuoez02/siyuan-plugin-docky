@@ -65,10 +65,13 @@ export default class DockyPlugin extends Plugin {
             }
         });
         await this.settingUtils.load();
-        updateZoom(this.data.settings);
 
         await this.loadConfig();
         this.showDockyDock();
+    }
+
+    onLayoutReady(): void {
+        updateZoom(this.data.settings);
     }
 
     async loadConfig() {
