@@ -11,10 +11,11 @@
 
 ## TODO
 
-+ [ ] dock图标自定义
-+ [ ] dock名称自定义
++ [x] dock图标自定义
++ [x] dock名称自定义
 
 ## Changelog
++ v0.3.0: （实验性功能）支持通过配置文件修改图标及名称：找到工作空间下`data/storage/petal/siyuan-plugin-docky/config.json`，修改对应id的icon为思源内置图标库（非Emoji）和name（名称）。shortcut为思源格式的快捷键配置，目前尚未完全掌握，可以参考社区讨论获取配置方法。
 + v0.2.0: 添加缩放功能
 + v0.1.0: 修正Panel配置
 + v0.1.0: 首个版本

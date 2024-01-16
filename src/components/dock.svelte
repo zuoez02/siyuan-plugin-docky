@@ -28,18 +28,23 @@
         if (docks.some((d) => d === id)) {
             return;
         }
-        docks.push(id);
+        docks.push({
+            name: id,
+            id,
+            icon: 'iconEmoji',
+            shortcut: '',
+        });
         plugin.addToDock(id);
         await save();
         window.location.reload();
     };
 
     const removeDock = async (id) => {
-        if (docks.every((d) => d !== id)) {
+        if (docks.every((d) => d.id !== id)) {
             return;
         }
         docks.splice(
-            docks.findIndex((d) => d === id),
+            docks.findIndex((d) => d.id === id),
             1,
         );
         await save();
@@ -84,8 +89,7 @@
 
     const deleteBlock = (index) => {
         const id = ids.splice(index, 1);
-        console.log(id, docks);
-        if (docks.some((d) => d === id[0])) {
+        if (docks.some((d) => d.id === id[0])) {
             removeDock(id[0]);
         }
         save();
@@ -145,7 +149,7 @@
                             ><svg><use xlink:href="#iconTrashcan"></use></svg
                             ></button
                         >
-                        {#if docks.some((d) => d === id)}
+                        {#if docks.some((d) => d.id === id)}
                             <button
                                 class="b3-button b3-tooltips b3-tooltips__sw"
                                 aria-label={plugin.i18n.removeDock}

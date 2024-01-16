@@ -87,6 +87,8 @@ export default class DockyPlugin extends Plugin {
             if (conf) {
                 this.config = conf;
                 this.saveConfig();
+            } else {
+                this.config = data;
             }
         } else {
             this.saveConfig();
@@ -132,20 +134,21 @@ export default class DockyPlugin extends Plugin {
         await this.saveConfig();
     }
 
-    addToDock(id) {
+    addToDock(dock) {
         this.addDock({
-            type: 'docky' + id,
+            type: 'docky' + dock.id,
             config: {
                 position: 'RightTop',
                 size: {
                     width: 200,
                     height: 200,
                 },
-                icon: 'iconEmoji',
-                title: 'Docky:' + id,
+                icon: dock.icon || 'iconEmoji',
+                title: dock.name || 'Docky:' + dock.id,
+                hotkey: dock.shortcut || undefined,
             },
             data: {
-                blockId: id,
+                blockId: dock.id,
                 plugin: this,
             },
             init() {
