@@ -1,6 +1,6 @@
 import { Plugin } from 'siyuan';
 import Dock from '@/components/dock.svelte';
-
+import { migrate } from './migrate';
 import "./index.scss";
 import Panel from './components/panel.svelte';
 import { SettingUtils } from './libs/setting-utils';
@@ -16,8 +16,14 @@ const updateZoom = (settings: any) => {
     document.documentElement.style.setProperty('--plugin-docky-zoom', zoom);
 }
 
+
 export default class DockyPlugin extends Plugin {
-    config = {
+    config: {
+        v: 2;
+        docks: string[];
+        ids: string[];
+    } = {
+        v: 2,
         docks: [],
         ids: []
     }
@@ -77,7 +83,11 @@ export default class DockyPlugin extends Plugin {
     async loadConfig() {
         const data = await this.loadData('config.json');
         if (data) {
-            Object.assign(this.config, data);
+            const conf = migrate(data, this.config.v);
+            if (conf) {
+                this.config = conf;
+                this.saveConfig();
+            }
         } else {
             this.saveConfig();
         }
