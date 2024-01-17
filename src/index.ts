@@ -4,6 +4,7 @@ import { migrate } from './migrate';
 import "./index.scss";
 import Panel from './components/panel.svelte';
 import { SettingUtils } from './libs/setting-utils';
+import fetch from 'sync-fetch';
 
 const updateZoom = (settings: any) => {
     let zoom: string;
@@ -23,10 +24,10 @@ export default class DockyPlugin extends Plugin {
         docks: string[];
         ids: string[];
     } = {
-        v: 2,
-        docks: [],
-        ids: []
-    }
+            v: 2,
+            docks: [],
+            ids: []
+        }
     settingUtils: SettingUtils;
     declare data: {
         settings: {
@@ -43,7 +44,7 @@ export default class DockyPlugin extends Plugin {
         this.settingUtils = new SettingUtils(
             this,
             'settings',
-            async (settings: {enableZoom: boolean; zoomFactor: number}) => {
+            async (settings: { enableZoom: boolean; zoomFactor: number }) => {
                 this.data.settings = settings;
                 updateZoom(settings);
                 this.settingUtils.save();
@@ -70,18 +71,24 @@ export default class DockyPlugin extends Plugin {
                 step: 0.025,
             }
         });
-        await this.settingUtils.load();
+        this.settingUtils.load();
 
-        await this.loadConfig();
+        this.loadConfig();
         this.showDockyDock();
     }
 
     onLayoutReady(): void {
-        updateZoom(this.data.settings);
+        this.settingUtils.load().then(() => {
+            updateZoom(this.data.settings);
+        })
     }
 
-    async loadConfig() {
-        const data = await this.loadData('config.json');
+    loadConfig() {
+        const res = fetch('/api/file/getFile', {
+            method: 'POST',
+            body: JSON.stringify({ "path": "/data/storage/petal/siyuan-plugin-docky/config.json" }),
+        })
+        const data = res.json();
         if (data) {
             const conf = migrate(data, this.config.v);
             if (conf) {

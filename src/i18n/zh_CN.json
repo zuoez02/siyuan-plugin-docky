@@ -18,5 +18,16 @@
             "title": "缩放比例",
             "description": "侧边栏文档缩放比例"
         }
+    },
+    "dock": {
+        "title": "Dock编辑",
+        "name": "名称",
+        "nameDesc": "dock的名称",
+        "icon": "图标",
+        "iconDesc": "图标内容为思源内部图标，例如iconSiYuan等",
+        "shortcut": "快捷键",
+        "shortcutDesc": "快捷键格式为: ⌘(command/ctrl)、⌥(option/alt)、⇧(shift) ,例如\"⌥U\"为Alt+U,配置内容请使用大写字母",
+        "confirm": "确定",
+        "cancel": "取消"
     }
 }
