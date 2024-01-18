@@ -3,6 +3,7 @@
   import DockyPlugin from "..";
   import { onMount } from "svelte";
   import { showMessage } from "siyuan";
+  import { Dock, DockIcon } from 'siyuan-kit-svelte';
   import { edit } from "@/utils/dock";
 
   let ids = [];
@@ -26,7 +27,7 @@
   });
 
   const addDock = async (id: string) => {
-    if (docks.some((d) => d === id)) {
+    if (docks.some((d) => d.id === id)) {
       return;
     }
     const dock = await edit(plugin.i18n, {
@@ -43,6 +44,22 @@
     await save();
     window.location.reload();
   };
+
+  const editDock = async (id: string) => {
+    const dockIndex = docks.findIndex(d => d.id === id);
+    if (dockIndex < 0) {
+      return;
+    }
+    const dock = docks[dockIndex];
+
+    const newDock = await edit(plugin.i18n, dock);
+    if (!newDock) {
+      return;
+    }
+    docks.splice(dockIndex, 1, newDock);
+    await save();
+    window.location.reload();
+  }
 
   const removeDock = async (id) => {
     if (docks.every((d) => d.id !== id)) {
@@ -107,28 +124,12 @@
   };
 </script>
 
-<div class="fn__flex-1 fn__flex-column">
-  <div class="block__icons">
-    <div class="block__logo">
-      <svg><use xlink:href="#iconEmoji"></use></svg>
-      {plugin.i18n.title}
-    </div>
-    <span class="fn__flex-1 fn__space"></span>
-    <span
-      data-type="min"
-      class="block__icon b3-tooltips b3-tooltips__sw"
-      aria-label={plugin.i18n.min}
-      ><svg><use xlink:href="#iconMin"></use></svg></span
-    >
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <span
-      on:click={() => addFromClipboard()}
-      class="block__icon b3-tooltips b3-tooltips__sw"
-      aria-label={plugin.i18n.add}
-      ><svg><use xlink:href="#iconAdd"></use></svg></span
-    >
-  </div>
-  <div class="fn__flex-1">
+<Dock title={plugin.i18n.title} icon="iconDocky">
+  <svelte:fragment slot="actions">
+    <DockIcon type="min" label={plugin.i18n.min} icon="iconMin"></DockIcon>
+    <DockIcon type="text" label={plugin.i18n.add} icon="iconAdd" on:click={() => addFromClipboard()}></DockIcon>
+  </svelte:fragment>
+  <div slot="content">
     {#if ids.length === 0}
       <div class="docky-hint">{plugin.i18n.addBlock}</div>
     {:else}
@@ -160,6 +161,12 @@
                 on:click={() => removeDock(id)}
                 ><svg><use xlink:href="#iconHideDock"></use></svg></button
               >
+              <button
+                class="b3-button b3-tooltips b3-tooltips__sw"
+                aria-label={plugin.i18n.editDock}
+                on:click={() => editDock(id)}
+                ><svg><use xlink:href="#iconEdit"></use></svg></button
+              >
             {:else}
               <button
                 class="b3-button b3-tooltips b3-tooltips__sw"
@@ -174,4 +181,4 @@
       {/each}
     {/if}
   </div>
-</div>
+</Dock>

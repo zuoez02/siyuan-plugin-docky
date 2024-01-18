@@ -14,6 +14,7 @@
 <div class="icon">
   {#each icons as icon}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
     <svg
       style="width: 14px; height: 14px; padding: 4px;"
       class="b3-tooltips b3-tooltips__sw"
