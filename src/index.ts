@@ -36,7 +36,7 @@ export default class DockyPlugin extends Plugin {
         }
     }
 
-    async onload() {
+    onload() {
         this.addIcons(`<symbol id="iconDocky" viewbox="0 0 1024 1024">
         <path d="M928 160v704h-832V320H704V160z" fill="#212121" opacity=".1" p-id="7191"></path><path d="M608 224h-576v-192h576z" fill="#005DBA" opacity=".1" p-id="7192"></path><path d="M0 256V0h640v256z m64-64h512V64H64z" fill="#005DBA" p-id="7193"></path><path d="M960 160v704l-32 32h-832l-32-32V320h64v512h768V192h-192V128h224z" fill="#212121" p-id="7194"></path>
         </symbol>`)
@@ -89,7 +89,9 @@ export default class DockyPlugin extends Plugin {
             body: JSON.stringify({ "path": "/data/storage/petal/siyuan-plugin-docky/config.json" }),
         })
         const data = res.json();
-        if (data) {
+        if (data.code === 404) {
+            this.saveConfig();
+        } else {
             const conf = migrate(data, this.config.v);
             if (conf) {
                 this.config = conf;
@@ -97,8 +99,6 @@ export default class DockyPlugin extends Plugin {
             } else {
                 this.config = data;
             }
-        } else {
-            this.saveConfig();
         }
         this.config.docks.forEach((d) => this.addToDock(d));
     }
