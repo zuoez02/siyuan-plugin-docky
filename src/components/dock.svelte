@@ -2,8 +2,8 @@
   import Panel from "./panel.svelte";
   import DockyPlugin from "..";
   import { onMount } from "svelte";
-  import { showMessage } from "siyuan";
-  import { Dock, DockIcon } from 'siyuan-kit-svelte';
+  import { openTab, showMessage } from "siyuan";
+  import { Dock, DockIcon } from "siyuan-kit-svelte";
   import { edit } from "@/utils/dock";
 
   let ids = [];
@@ -26,6 +26,15 @@
     docks = [...config.docks];
   });
 
+  const open = (id) => {
+    openTab({
+      app: plugin.app,
+      doc: {
+        id,
+      },
+    });
+  };
+
   const addDock = async (id: string) => {
     if (docks.some((d) => d.id === id)) {
       return;
@@ -46,7 +55,7 @@
   };
 
   const editDock = async (id: string) => {
-    const dockIndex = docks.findIndex(d => d.id === id);
+    const dockIndex = docks.findIndex((d) => d.id === id);
     if (dockIndex < 0) {
       return;
     }
@@ -59,7 +68,7 @@
     docks.splice(dockIndex, 1, newDock);
     await save();
     window.location.reload();
-  }
+  };
 
   const removeDock = async (id) => {
     if (docks.every((d) => d.id !== id)) {
@@ -127,7 +136,12 @@
 <Dock title={plugin.i18n.title} icon="iconDocky">
   <svelte:fragment slot="actions">
     <DockIcon type="min" label={plugin.i18n.min} icon="iconMin"></DockIcon>
-    <DockIcon type="text" label={plugin.i18n.add} icon="iconAdd" on:click={() => addFromClipboard()}></DockIcon>
+    <DockIcon
+      type="text"
+      label={plugin.i18n.add}
+      icon="iconAdd"
+      on:click={() => addFromClipboard()}
+    ></DockIcon>
   </svelte:fragment>
   <div slot="content">
     {#if ids.length === 0}
@@ -136,6 +150,12 @@
       {#each ids as id, index (id)}
         <div class="docky-panel">
           <div class="actions">
+            <button
+              class="b3-button b3-tooltips b3-tooltips__sw"
+              aria-label={plugin.i18n.open}
+              on:click={() => open(id)}
+              ><svg><use xlink:href="#iconFocus"></use></svg></button
+            >
             <button
               class="b3-button b3-tooltips b3-tooltips__sw"
               aria-label={plugin.i18n.moveUp}

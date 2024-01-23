@@ -3,6 +3,7 @@
     "alreadyExist": "Block ID already exists",
     "add": "Add Block ID from Clipboard",
     "min": "Minimize",
+    "open": "Open",
     "remove": "Remove",
     "moveUp": "Move Up",
     "moveDown": "Move Down",
