@@ -31,7 +31,7 @@
     "vite-plugin-zip-pack": "^1.0.5"
   },
   "dependencies": {
-    "siyuan-kit-svelte": "^0.1.2",
+    "siyuan-kit-svelte": "^0.1.3",
     "sync-fetch": "^0.5.2"
   }
 }

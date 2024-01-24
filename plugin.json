@@ -2,8 +2,8 @@
   "name": "siyuan-plugin-docky",
   "author": "zuoez02",
   "url": "https://github.com/zuoez02/siyuan-plugin-docky",
-  "version": "0.4.3",
-  "minAppVersion": "2.10.14",
+  "version": "0.4.4",
+  "minAppVersion": "2.12.4",
   "backends": [
     "windows",
     "linux",
