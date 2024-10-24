@@ -1,8 +1,8 @@
 {
-  "name": "plugin-sample-vite-svelte",
-  "version": "0.2.6",
+  "name": "siyuan-plugin-docky",
+  "version": "0.4.5",
   "type": "module",
-  "description": "This is a sample plugin based on vite and svelte for Siyuan (https://b3log.org/siyuan)",
+  "description": "Siyuan plugin docky",
   "repository": "",
   "homepage": "",
   "author": "",
